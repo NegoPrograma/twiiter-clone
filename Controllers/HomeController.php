@@ -9,7 +9,7 @@ class HomeController extends Controller {
         $userModel  =  new UserModel();
         
         if($userModel->hasLoginSession() == false){
-        header("location: Login");
+        header("location: login");
         }
     }
     

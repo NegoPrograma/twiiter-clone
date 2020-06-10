@@ -1,1 +1,3 @@
-<h1> Bem vindo meu nome dinâmico chamado: <?php echo $name ?> </h1>
+<h1> Área interna </h1>
+
+<a href="login/logout">Sair</a>

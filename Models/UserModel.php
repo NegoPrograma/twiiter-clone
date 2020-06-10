@@ -29,6 +29,11 @@ class UserModel extends Model {
 return $message;
       } 
       
+      public function    getLastUserId( ){
+        return $this->db->lastInsertId();
+
+      } 
+      
       public function    checkDuplicateEmail($email){
       $stmt  = "SELECT * FROM users WHERE email  =  '{$email}'";
       $query  =  $this->db->query($stmt);
@@ -36,5 +41,25 @@ return $message;
      		return true;
           }
           return false;
+      }
+      
+      public function login($email,$pass){
+      $result;
+      $email = addslashes($email);
+      $pass = md5($pass);
+         if(!empty($email) && !empty($pass)){
+         
+				 $stmt = "SELECT * FROM users WHERE email = '{$email}', password = '{$pass}' ";
+				 $result = $this->db->query($stmt)->fetch();
+				 if(!result){
+               return null;
+  					  }
+  				else{
+  				     return $result["id"];
+  				  }
+
+  			}
+  			return null;
+
       } 
 }

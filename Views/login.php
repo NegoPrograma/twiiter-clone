@@ -9,3 +9,8 @@ E-mail:
 </form>
 
 <a href="login/signup">Cadastre-se</a>
+
+<?php if(isset($viewData["message"])) 
+     echo $viewData["message"];	
+
+  ?>
