@@ -9,7 +9,7 @@ class HomeController extends Controller {
         $userModel  =  new UserModel();
         
         if($userModel->hasLoginSession() == false){
-        header("location: login");
+            header("location: login");
         }
     }
     
@@ -17,10 +17,21 @@ class HomeController extends Controller {
 
     
     public function index(){
-        
+        $userModel = new UserModel($_SESSION['login_data']);
+
+        $this->data['name'] = $userModel->getName();
+        $this->data['followers'] = $userModel->countFollowers();
+        $this->data['following'] = $userModel->countFollowing();
+        $this->data['suggestions'] = $userModel->suggestUsers(rand(1,5));
 
         $this->loadTemplate("home",$this->data);
     }
+
+    public function follow($id){
+        
+    }
+
+
 
     
     

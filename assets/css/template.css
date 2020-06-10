@@ -1,0 +1,54 @@
+body{
+    margin:0;
+}
+
+.top {
+    height: 40px;
+    background-color: aqua;
+    color: #FFF;
+}
+
+.topfull {
+    width: 100%;
+    max-width: 1024px;
+    margin:auto;
+}
+
+.topleft {
+    width: 50%;
+    line-height: 40px;
+    float: left;
+}
+
+.topright {
+    width: 50%;
+    line-height: 40px;
+    float: right;
+    text-align: right;
+}
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin:auto;
+}
+
+.feed {
+    width: 70%;
+    min-height: 300px;
+    float: left;
+}
+
+.middle {
+    width: 50%;
+    height: 50px;
+    float: left;
+    text-align: center;
+}
+
+.right-side {
+    width: 30%;
+    min-height: 300px;
+    float: left;
+    background-color: #EEE;
+}

@@ -37,7 +37,7 @@
        $this->data['message'] = $userModel->signUp($name,$email,$password);
        if($this->data['message']   == "Seja bem vindo ao twiiter!"){
        $_SESSION["login_data"]  = $userModel->getLastUserId();
-       header("location: home");
+       header("location: ../home");
       } 
        
        }
@@ -45,9 +45,9 @@
 			$this->loadView("signup",$this->data);
       } 
       
-      public function  logout( ){
+      public function  logout(){
        unset($_SESSION["login_data"]);
-       header("location: login");
+       header("location: ../home");
 
       } 
 	
