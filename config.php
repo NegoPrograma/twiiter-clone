@@ -1,4 +1,3 @@
-
 <?php
 
 require_once 'env.php';
@@ -8,7 +7,7 @@ $config = array();
 
 
 if(ENV == "development"){
-    $config['dbname'] = 'fsphp';
+    $config['dbname'] = 'twiiterclone';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = "";

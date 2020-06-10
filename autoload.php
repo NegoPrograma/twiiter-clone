@@ -13,11 +13,11 @@ function namespaceChecker($class){
     $controllersNamespace = "Controller";  
     $modelsNamespace = "Model";
     if(strpos($class,$controllersNamespace)){
-        return __DIR__."./Controllers/".$class;
+        return __DIR__."/Controllers/".$class;
     } else if(strpos($class,$modelsNamespace)){
-        return __DIR__."./Models/".$class;
-    } else if(file_exists(__DIR__."./Core/".$class)){
-        return __DIR__."./Core/".$class;
+        return __DIR__."/Models/".$class;
+    } else if(file_exists(__DIR__."/Core/".$class)){
+        return __DIR__."/Core/".$class;
     } else {
         return null;
     }

@@ -24,7 +24,7 @@ class Core {//extends Controller{
             $url = explode("/",$url);
             array_shift($url);
 
-          $currentController = $url[0] ."Controller";
+          $currentController = ucfirst($url[0]) ."Controller";
 
           if(isset($url[1])){
               $currentAction = $url[1];
