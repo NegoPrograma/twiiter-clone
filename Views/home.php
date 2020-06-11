@@ -1,6 +1,11 @@
 <div class="feed">
-    Feed do usuário...
+    <form method="post">
+        <textarea name="tweet"  class="tweet-box"></textarea>
+        <button type="submit">Tweetar</button>
+    </form>
 </div>
+
+
 <div class="right-side">
     <h4>Relacionamentos</h4>
     <div class="middle"><?php echo $viewData['followers']?><br>Seguidores</div>
@@ -18,13 +23,20 @@
             <td><?php echo $suggestion['name']?></td>
             <td>
             <?php if($suggestion['followed'] == 0): ?>
-                <a href="/home/follow/<?php echo $suggestion['id'] ?>">Seguir</a>
+                <a href="./home/follow/<?php echo $suggestion['id'] ?>">Seguir</a>
             <?php else: ?>
-                <a href="/home/unfollow/<?php echo $suggestion['id'] ?>">Deixar de Seguir</a>    
+                <a href="./home/unfollow/<?php echo $suggestion['id'] ?>">Deixar de Seguir</a>    
             <?php endif;?>
             </td>
         </tr>
         <?php endforeach;?>
     </table>
 </div>
+<?php foreach($viewData['tweets'] as $tweet): ?>
+    <strong><?php echo $tweet['name']?></strong> - <?php echo date('H:i',strtotime($tweet['post_time']))?> <br>
+    <p><?php echo $tweet['tweet']?></p>
+    <hr>
+
+    <?php endforeach;?>
+
 

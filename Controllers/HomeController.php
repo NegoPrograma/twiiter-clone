@@ -18,7 +18,15 @@ class HomeController extends Controller {
     
     public function index(){
         $userModel = new UserModel($_SESSION['login_data']);
-
+        $tweetModel = new TweetModel();
+        $user_id = $userModel->getUserId();
+        if(isset($_POST['tweet']) && !empty($_POST['tweet'])){
+            $tweet = $_POST['tweet'];
+            $tweetModel->postTweet($tweet,$user_id);
+        }
+        $feedUsers = $userModel->getListOfFollowed();
+        $feedUsers[] = $user_id;
+        $this->data['tweets'] = $tweetModel->getTweets($feedUsers,10);
         $this->data['name'] = $userModel->getName();
         $this->data['followers'] = $userModel->countFollowers();
         $this->data['following'] = $userModel->countFollowing();
@@ -28,8 +36,19 @@ class HomeController extends Controller {
     }
 
     public function follow($id){
-        
+        $userModel = new UserModel($_SESSION['login_data']);
+        $userModel->follow($userModel->getUserId(),$id);
+        header("location: ../../");
+
     }
+
+    public function unfollow($id){
+        $userModel = new UserModel($_SESSION['login_data']);
+        $userModel->unfollow($userModel->getUserId(),$id);
+        header("location:  ../../");
+
+    }
+
 
 
 

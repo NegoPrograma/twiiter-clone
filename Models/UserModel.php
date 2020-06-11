@@ -11,6 +11,10 @@ class UserModel extends Model
 		}
 	}
 
+	public function getUserId(){
+		return $this->user_id;
+	}
+
 	public function getName(){
 		$stmt = "SELECT * FROM users WHERE id = '{$this->user_id}'";
 		$sql = $this->db->query($stmt);
@@ -30,7 +34,18 @@ class UserModel extends Model
 		$stmt = "SELECT * FROM relationships WHERE id_followed = {$this->user_id}";
 		$sql = $this->db->query($stmt);
 		return $sql->rowCount();
-	}
+    }
+    
+    public function getListOfFollowed(){
+        $stmt = "SELECT * FROM relationships WHERE id_follower = {$this->user_id}";
+        $sql = $this->db->query($stmt)->fetchAll();
+        $listOfFollowed = array();
+        foreach($sql as $followed){
+            $listOfFollowed[] = $followed['id_followed'];
+        }
+        return $listOfFollowed;
+        
+    }
 
 	public function suggestUsers($limit){
 		$stmt = "SELECT *,
@@ -46,6 +61,17 @@ class UserModel extends Model
 		return [];
 
 	}
+
+	public function follow($id_follower,$id_followed){
+        $stmt = "INSERT INTO relationships SET id_follower = {$id_follower}, id_followed = {$id_followed}";
+        $sql = $this->db->query($stmt);
+    }
+
+    public function unfollow($id_follower,$id_followed){
+		$stmt = "DELETE FROM relationships WHERE id_follower = {$id_follower} AND id_followed = {$id_followed}";
+		
+        $sql = $this->db->query($stmt);
+    }
 
 
 
