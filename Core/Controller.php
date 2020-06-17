@@ -1,19 +1,20 @@
 <?php
 
-class Controller{
+class Controller
+{
 
-public function  __construct( ){
-
-      } 
-
-    public function loadView($viewName,$viewData = array()){
-        
-        include_once './Views/'.$viewName.'.php';
+    public function  __construct()
+    {
     }
 
-    public function loadTemplate($viewName,$viewData = array()){
+    public function loadView($viewName, $viewData = array())
+    {
+
+        include_once './Views/' . $viewName . '.php';
+    }
+
+    public function loadTemplate($viewName, $viewData = array())
+    {
         include_once "./views/template.php";
     }
-
-  
 }

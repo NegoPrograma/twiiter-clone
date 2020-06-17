@@ -6,14 +6,13 @@ global $config;
 $config = array();
 
 
-if(ENV == "development"){
+if (ENV == "development") {
     $config['dbname'] = 'twiiterclone';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = "";
     $config['port'] = 3306;
-    
-}else {
+} else {
     $config['dbname'] = 'galeria';
     $config['host'] = 'localhost';
     $config['dbuser'] = 'root';
